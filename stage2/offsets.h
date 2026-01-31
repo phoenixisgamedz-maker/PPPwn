@@ -42,3 +42,40 @@
 
 #elif (FIRMWARE == 1100)
 #define kdlsym_addr_Xfast_syscall 0xffffffff822001c0
+#define kdlsym_addr_printf 0xffffffff824fcbd0
+#define kdlsym_addr_sysent 0xffffffff83301760
+#define kdlsym_addr_amd_syscall_patch1 0xffffffff82200490
+#define kdlsym_addr_amd_syscall_patch2 0xffffffff822004b5
+#define kdlsym_addr_amd_syscall_patch3 0xffffffff822004b9
+#define kdlsym_addr_amd_syscall_patch4 0xffffffff822004c2
+#define kdlsym_addr_copyin_patch1 0xffffffff824de037
+#define kdlsym_addr_copyin_patch2 0xffffffff824de043
+#define kdlsym_addr_copyout_patch1 0xffffffff824ddf42
+#define kdlsym_addr_copyout_patch2 0xffffffff824ddf4e
+#define kdlsym_addr_copyinstr_patch1 0xffffffff824de4e3
+#define kdlsym_addr_copyinstr_patch2 0xffffffff824de4ef
+#define kdlsym_addr_copyinstr_patch3 0xffffffff824de520
+
+#elif (FIRMWARE == 1250)
+#define kdlsym_addr_Xfast_syscall 0xffffffff822001c0
+#define kdlsym_addr_printf 0xffffffff823f6d20
+#define kdlsym_addr_sysent 0xffffffff83301a40
+#define kdlsym_addr_amd_syscall_patch1 0xffffffff82200490
+#define kdlsym_addr_amd_syscall_patch2 0xffffffff822004b5
+#define kdlsym_addr_amd_syscall_patch3 0xffffffff822004b9
+#define kdlsym_addr_amd_syscall_patch4 0xffffffff822004c2
+#define kdlsym_addr_copyin_patch1 0xffffffff824fc157
+#define kdlsym_addr_copyin_patch2 0xffffffff824fc163
+#define kdlsym_addr_copyout_patch1 0xffffffff824fc062
+#define kdlsym_addr_copyout_patch2 0xffffffff824fc06e
+#define kdlsym_addr_copyinstr_patch1 0xffffffff824fc603
+#define kdlsym_addr_copyinstr_patch2 0xffffffff824fc60f
+#define kdlsym_addr_copyinstr_patch3 0xffffffff824fc640
+
+#else
+#error "Invalid firmware"
+#endif
+
+#define kdlsym(sym) (kaslr_offset + kdlsym_addr_##sym)
+
+#endif
